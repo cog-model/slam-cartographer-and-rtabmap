@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package rtabmap.proto;
+
+import "Time.proto";
+import "Transform.proto";
+
+message TimedPose
+{
+    Time time = 1;
+    Transform pose = 2;
+}
+
+message Trajectory
+{
+    repeated TimedPose timed_poses = 1;
+}
+
+message Trajectories
+{
+    repeated Trajectory trajectories = 1;
+}

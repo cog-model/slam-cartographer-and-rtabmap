@@ -1,0 +1,64 @@
+updated_poses_frame: base_link
+
+needs_localization: true
+
+# mapping mode
+accumulative_mapping: true
+temporary_mapping: false
+
+# door tracking
+door_tracking_small_radius: 0.3
+door_tracking_large_radius: 0.7
+draw_door_center_estimation: false
+draw_door_corners: false
+
+TimedOccupancyGridMap:
+    MaxInterpolationTimeError: 0.06
+    GuaranteedInterpolationTimeWindow: 1.0
+    EnableTrajectoriesTrimmer: false
+    TrajectoriesTrimmer:
+        MaxTimeErrorForClosestLocalMapSearch: 0.1
+        SkipLastN: 20
+        MaxDistance: 3.0
+        MinSimilarity: 0.9
+    OccupancyGridMap:
+        CellSize: 0.1
+        LocalMapBuilder:
+            # CellSize
+            MaxVisibleRange: -1.0
+            # MaxVisibleRange: -1.0
+            MinObstacleHeight: 0.2
+            MaxObstacleHeight: 1.2
+            SemanticDilation:
+                DilationSize: 20
+            MinSemanticRange: 0.0
+            MaxSemanticRange: -1.0
+            EnableRayTracing: true
+            RayTracing:
+                # CellSize
+                MaxVisibleRange: 100.0
+                MaxTracingRange: 10.0
+                # MaxTracingRange: 3.0
+                TraceIntoUnknownSpace: false
+            MaxRange2d: 10.0
+            SensorBlindRange2d: 0.0
+        ObstacleDilation:
+            # CellSize
+            DilationSize: 0.0
+        OccupancyGridBuilder:
+            # CellSize
+            MissProb: 0.4
+            HitProb: 0.7
+            MinClampingProb: 0.1192
+            MaxClampingProb: 0.971
+            OccupancyProbThr: 0.5
+            TemporarilyOccupiedCellColorRgb: 9831741  # 9831741
+            ShowTemporarilyOccupiedCells: true
+        TemporaryOccupancyGridBuilder:
+            # CellSize
+            TemporaryMissProb: 0.4
+            TemporaryHitProb: 0.7
+            TemporaryOccupancyProbThr: 0.5
+            MaxTemporaryLocalMaps: 1
+        EnableObjectTracking: false
+

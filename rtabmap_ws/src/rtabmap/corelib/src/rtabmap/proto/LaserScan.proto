@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package rtabmap.proto;
+
+import "Transform.proto";
+
+message LaserScan
+{
+    Transform to_sensor = 1;
+    repeated float points_in_sensor = 2;  // xyz
+    repeated float intensities = 3;  // optional
+}

@@ -1,0 +1,56 @@
+updated_poses_frame: base_link
+
+needs_localization: true
+
+# mapping mode
+accumulative_mapping: false
+temporary_mapping: true
+
+# door tracking
+door_tracking_small_radius: 0.3
+door_tracking_large_radius: 0.7
+draw_door_center_estimation: false
+draw_door_corners: false
+
+TimedOccupancyGridMap:
+    MaxInterpolationTimeError: 0.06
+    GuaranteedInterpolationTimeWindow: 1.0
+    OccupancyGridMap:
+        CellSize: 0.2
+        LocalMapBuilder:
+            # CellSize
+            MaxVisibleRange: 0.0
+            MaxRange2d: 50.0
+            MinObstacleHeight: 0.5
+            MaxObstacleHeight: 1.2
+            MinSemanticRange: 0.0
+            MaxSemanticRange: 0.0
+            EnableRayTracing: true
+            SensorBlindRange2d: 0.0
+            SemanticDilation:
+                DilationSize: 0
+            RayTracing:
+                # CellSize
+                MaxVisibleRange: 50.0
+                MaxTracingRange: 50.0
+                TraceIntoUnknownSpace: true
+        ObstacleDilation:
+            # CellSize
+            DilationSize: 0.0
+        OccupancyGridBuilder:
+            # CellSize
+            MissProb: 0.4
+            HitProb: 0.7
+            MinClampingProb: 0.1192
+            MaxClampingProb: 0.971
+            OccupancyProbThr: 0.5
+            TemporarilyOccupiedCellColorRgb: 9831741  # 9831741
+            ShowTemporarilyOccupiedCells: true
+        TemporaryOccupancyGridBuilder:
+            # CellSize
+            TemporaryMissProb: 0.3
+            TemporaryHitProb: 0.6
+            TemporaryOccupancyProbThr: 0.5
+            MaxTemporaryLocalMaps: 2
+        EnableObjectTracking: true
+

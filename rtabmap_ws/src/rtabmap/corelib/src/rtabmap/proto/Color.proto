@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package rtabmap.proto;
+
+message Color
+{
+    int32 data = 1;
+}

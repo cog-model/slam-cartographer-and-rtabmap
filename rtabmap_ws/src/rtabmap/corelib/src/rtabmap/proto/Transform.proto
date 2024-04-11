@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package rtabmap.proto;
+
+message Transform
+{
+    float x = 1;
+    float y = 2;
+    float z = 3;
+    float qx = 4;
+    float qy = 5;
+    float qz = 6;
+    float qw = 7;
+}

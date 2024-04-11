@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+package cartographer.mapping.proto;
+
+message PureLocalizationTrimmerOptions {
+  int32 max_submaps_to_keep = 1;
+}

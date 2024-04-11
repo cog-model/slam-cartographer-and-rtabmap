@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package rtabmap.proto;
+
+message Time
+{
+    uint32 sec = 1;
+    uint32 nsec = 2;
+}

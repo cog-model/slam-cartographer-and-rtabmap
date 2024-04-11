@@ -1,0 +1,113 @@
+<launch>
+
+    <!-- Config file -->
+    <arg name="config_path"/>
+
+    <!-- Save / load map -->
+    <arg name="load_map_path" default=""/>
+    <arg name="save_map_path" default=""/>
+
+    <arg name="save_tracking_results_path" default=""/>
+
+    <!-- Data to read -->
+    <arg name="accum/approx_sync" default="true"/>
+    <arg name="accum/queue_size" default="10"/>
+    <arg name="accum/subscribe_rgb" default="false"/>
+    <arg name="accum/num_rgb" default="1"/>
+
+    <arg name="temp/approx_sync" default="true"/>
+    <arg name="temp/queue_size" default="10"/>
+    <arg name="temp/subscribe_rgb" default="true"/>
+    <arg name="temp/num_rgb" default="1"/>
+
+    <!-- Input topics -->
+    <arg name="accum/global_odom" default="/cartographer/tracked_global_odometry"/>
+    <arg name="accum/local_odom" default="/cartographer/tracked_local_odometry"/>
+    <arg name="accum/point_cloud" default="/velodyne_points"/>
+    <arg name="accum/rgb/image" default="/realsense_back_segmentated"/>
+    <arg name="accum/rgb/camera_info" default="/realsense_back/color/camera_info"/>
+    <arg name="accum/rgb/image_transport" default="raw"/>
+    <arg name="accum/rgb_1/image" default="/rgb_1/image"/>
+    <arg name="accum/rgb_1/camera_info" default="/rgb_1/camera_info"/>
+    <arg name="accum/rgb_1/image_transport" default="raw"/>
+    <arg name="accum/rgb_2/image" default="/rgb_2/image"/>
+    <arg name="accum/rgb_2/camera_info" default="/rgb_2/camera_info"/>
+    <arg name="accum/rgb_2/image_transport" default="raw"/>
+
+    <arg name="temp/global_odom" default="/odom"/>
+    <arg name="temp/local_odom" default="/odom"/>
+    <arg name="temp/point_cloud" default="/lidar/top/pointcloud"/>
+    <arg name="temp/rgb/image" default="/tracked_image"/>
+    <arg name="temp/rgb/camera_info" default="/camera/front/camera_info"/>
+    <arg name="temp/rgb/image_transport" default="raw"/>
+    <arg name="temp/rgb_1/image" default="/rgb_1/image"/>
+    <arg name="temp/rgb_1/camera_info" default="/rgb_1/camera_info"/>
+    <arg name="temp/rgb_1/image_transport" default="raw"/>
+    <arg name="temp/rgb_2/image" default="/rgb_2/image"/>
+    <arg name="temp/rgb_2/camera_info" default="/rgb_2/camera_info"/>
+    <arg name="temp/rgb_2/image_transport" default="raw"/>
+
+    <arg name="optimization_results" default="/cartographer/optimization_results"/>
+    <arg name="dilated_semantic_image" default="dilated_semantic_image"/>
+    <arg name="tracked_objects" default="tracked_objects"/>
+
+    <!-- Other -->
+    <arg name="node_name" default="occupancy_grid_map"/>
+
+    <!-- Occupanyc grid builder -->
+    <node pkg="rtabmap_ros" type="occupancy_grid_map" name="$(arg node_name)" output="screen" args="--uinfo">
+
+        <!-- Config file -->
+        <param name="config_path" value="$(arg config_path)"/>
+
+        <!-- Save / load map -->
+        <param name="load_map_path" value="$(arg load_map_path)"/>
+        <param name="save_map_path" value="$(arg save_map_path)"/>
+
+        <param name="save_tracking_results_path" value="$(arg save_tracking_results_path)"/>
+
+        <!-- Data to read -->
+        <param name="accum/approx_sync" value="$(arg accum/approx_sync)"/>
+        <param name="accum/queue_size" value="$(arg accum/queue_size)"/>
+        <param name="accum/subscribe_rgb" value="$(arg accum/subscribe_rgb)"/>
+        <param name="accum/num_rgb" value="$(arg accum/num_rgb)"/>
+
+        <param name="temp/approx_sync" value="$(arg temp/approx_sync)"/>
+        <param name="temp/queue_size" value="$(arg temp/queue_size)"/>
+        <param name="temp/subscribe_rgb" value="$(arg temp/subscribe_rgb)"/>
+        <param name="temp/num_rgb" value="$(arg temp/num_rgb)"/>
+
+        <!-- Input topics -->
+        <remap from="accum/global_odom" to="$(arg accum/global_odom)"/>
+        <remap from="accum/local_odom" to="$(arg accum/local_odom)"/>
+        <remap from="accum/point_cloud" to="$(arg accum/point_cloud)"/>
+        <remap from="accum/rgb/image" to="$(arg accum/rgb/image)"/>
+        <remap from="accum/rgb/camera_info" to="$(arg accum/rgb/camera_info)"/>
+        <param name="accum/rgb/image_transport" value="$(arg accum/rgb/image_transport)"/>
+        <remap from="accum/rgb_1/image" to="$(arg accum/rgb_1/image)"/>
+        <remap from="accum/rgb_1/camera_info" to="$(arg accum/rgb_1/camera_info)"/>
+        <param name="accum/rgb_1/image_transport" value="$(arg accum/rgb_1/image_transport)"/>
+        <remap from="accum/rgb_2/image" to="$(arg accum/rgb_2/image)"/>
+        <remap from="accum/rgb_2/camera_info" to="$(arg accum/rgb_2/camera_info)"/>
+        <param name="accum/rgb_2/image_transport" value="$(arg accum/rgb_2/image_transport)"/>
+
+        <remap from="temp/global_odom" to="$(arg temp/global_odom)"/>
+        <remap from="temp/local_odom" to="$(arg temp/local_odom)"/>
+        <remap from="temp/point_cloud" to="$(arg temp/point_cloud)"/>
+        <remap from="temp/rgb/image" to="$(arg temp/rgb/image)"/>
+        <remap from="temp/rgb/camera_info" to="$(arg temp/rgb/camera_info)"/>
+        <param name="temp/rgb/image_transport" value="$(arg temp/rgb/image_transport)"/>
+        <remap from="temp/rgb_1/image" to="$(arg temp/rgb_1/image)"/>
+        <remap from="temp/rgb_1/camera_info" to="$(arg temp/rgb_1/camera_info)"/>
+        <param name="temp/rgb_1/image_transport" value="$(arg temp/rgb_1/image_transport)"/>
+        <remap from="temp/rgb_2/image" to="$(arg temp/rgb_2/image)"/>
+        <remap from="temp/rgb_2/camera_info" to="$(arg temp/rgb_2/camera_info)"/>
+        <param name="temp/rgb_2/image_transport" value="$(arg temp/rgb_2/image_transport)"/>
+
+        <remap from="optimization_results" to="$(arg optimization_results)"/>
+        <remap from="dilated_semantic_image" to="$(arg dilated_semantic_image)"/>
+        <remap from="tracked_objects" to="$(arg tracked_objects)"/>
+    </node>
+
+</launch>
+

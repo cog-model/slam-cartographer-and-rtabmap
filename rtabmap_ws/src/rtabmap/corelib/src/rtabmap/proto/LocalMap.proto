@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package rtabmap.proto;
+
+import "Time.proto";
+import "Color.proto";
+import "Transform.proto";
+import "MapLimits.proto";
+
+message LocalMap
+{
+    message ColoredGrid
+    {
+        float cell_size = 1;
+        MapLimitsI limits = 2;
+        bytes grid_compressed = 3;
+        bytes colors_compressed = 4;
+    }
+
+    ColoredGrid colored_grid = 1;
+    float sensor_blind_range_2d_sqr = 2;
+    Transform to_sensor = 3;
+    Transform from_updated_pose = 4;
+    Time time = 5;
+    bool points_duplicated = 6;
+}

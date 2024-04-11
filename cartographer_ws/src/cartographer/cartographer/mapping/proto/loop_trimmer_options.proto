@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package cartographer.mapping.proto;
+
+message LoopTrimmerOptions {
+  bool trim_false_detected_loops = 1;
+  double rotation_error_rate = 5;
+  double translation_to_rotation_error = 6;
+  double translation_error_rate = 2;
+  double rotation_to_translation_error_rate = 7;
+
+  bool trim_loops_in_window = 3;
+  int32 window_size_per_submap = 4;
+}

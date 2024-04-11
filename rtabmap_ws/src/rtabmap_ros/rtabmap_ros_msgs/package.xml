@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<package>
+  <name>rtabmap_ros_msgs</name>
+  <version>0.20.13</version>
+  <description>RTAB-Map's ros-pkg. RTAB-Map is a RGB-D SLAM approach with real-time constraints.</description>
+  <maintainer email="matlabbe@gmail.com">Mathieu Labbe</maintainer>
+  <author>Mathieu Labbe</author>
+  <license>BSD</license>
+  <url type="bugtracker">https://github.com/introlab/rtabmap_ros/issues</url>
+  <url type="repository">https://github.com/introlab/rtabmap_ros</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend>genmsg</buildtool_depend>
+  
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>std_srvs</build_depend>
+  <build_depend>nav_msgs</build_depend>
+  <build_depend>stereo_msgs</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>visualization_msgs</build_depend>
+  <build_depend>rosgraph_msgs</build_depend>
+  <build_depend>move_base_msgs</build_depend>
+  <build_depend>octomap_msgs</build_depend>
+  <build_depend>message_generation</build_depend>
+
+  <run_depend>sensor_msgs</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>std_srvs</run_depend>
+  <run_depend>nav_msgs</run_depend>
+  <run_depend>stereo_msgs</run_depend>
+  <run_depend>geometry_msgs</run_depend>
+  <run_depend>visualization_msgs</run_depend>
+  <run_depend>rosgraph_msgs</run_depend>
+  <run_depend>move_base_msgs</run_depend>
+  <run_depend>octomap_msgs</run_depend>
+  <run_depend>message_runtime</run_depend>
+</package>

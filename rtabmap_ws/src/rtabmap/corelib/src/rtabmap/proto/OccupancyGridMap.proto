@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package rtabmap.proto.OccupancyGridMap;
+
+import "Time.proto";
+import "Transform.proto";
+import "LocalMap.proto";
+
+message MetaData
+{
+    float cell_size = 1;
+}
+
+message Node
+{
+    int32 node_id = 1;
+    Transform pose = 2;
+    LocalMap local_map = 3;
+}

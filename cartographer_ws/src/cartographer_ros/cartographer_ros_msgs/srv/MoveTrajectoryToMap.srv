@@ -1,0 +1,4 @@
+int32 trajectory_id
+string map_name
+---
+cartographer_ros_msgs/StatusResponse status

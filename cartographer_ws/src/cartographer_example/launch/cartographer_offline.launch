@@ -1,0 +1,66 @@
+<!--
+  Copyright 2018 The Cartographer Authors
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<launch>
+
+    <!-- Arguments -->
+    <arg name="config_filenames" />
+    <arg name="bag_filenames" />
+    <arg name="create_new_trajectory_for_each_rosbag" default="false" />
+
+    <arg name="urdf_filenames" default="''" />
+    <arg name="read_bag_transforms" default="true" />
+    <arg name="read_transforms_from_tf" default="true" />
+
+    <arg name="load_state_filename" default="''" />
+    <arg name="load_frozen_state" default="true" />
+    <arg name="save_state_filename" default="''" />
+
+    <arg name="sleep_ms_after_first_clock" default="0" />
+    <arg name="sleep_ms" default="0" />
+
+    <arg name="keep_running" default="true" />
+
+    <!-- Topics -->
+    <arg name="imu" default="/imu" />
+    <arg name="point2" default="/velodyne_points" />
+    <arg name="point2_1" default="/point2_1" />
+    <arg name="point2_2" default="/point2_2" />
+    <arg name="point2_3" default="/point2_3" />
+
+    <!-- Cartographer offline -->
+    <node ns="cartographer" pkg="cartographer_ros" type="cartographer_offline_node" name="cartographer_offline_node" args="
+            -configuration_filenames $(arg config_filenames)
+            -bag_filenames $(arg bag_filenames)
+            -create_new_trajectory_for_each_rosbag=$(arg create_new_trajectory_for_each_rosbag)
+            -urdf_filenames $(arg urdf_filenames)
+            -read_bag_transforms=$(arg read_bag_transforms)
+            -read_transforms_from_tf=$(arg read_transforms_from_tf)
+            -load_state_filename $(arg load_state_filename)
+            -load_frozen_state=$(arg load_frozen_state)
+            -save_state_filename $(arg save_state_filename)
+            -sleep_ms_after_first_clock $(arg sleep_ms_after_first_clock)
+            -sleep_ms $(arg sleep_ms)
+            -keep_running=$(arg keep_running)"
+            output="screen">
+        <remap from="imu" to="$(arg imu)" />
+        <remap from="points2" to="$(arg point2)" />
+        <remap from="points2_1" to="$(arg point2_1)" />
+        <remap from="points2_2" to="$(arg point2_2)" />
+        <remap from="points2_3" to="$(arg point2_3)" />
+    </node>
+
+</launch>

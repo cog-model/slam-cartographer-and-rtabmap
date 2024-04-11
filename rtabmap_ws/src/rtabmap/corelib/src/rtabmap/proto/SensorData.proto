@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package rtabmap.proto;
+
+import "LaserScan.proto";
+
+message SensorData
+{
+    LaserScan laser_scan = 1;
+}

@@ -1,0 +1,3 @@
+---
+cartographer_ros_msgs/StatusResponse status
+cartographer_ros_msgs/MapsData maps

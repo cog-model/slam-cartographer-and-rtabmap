@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package rtabmap.proto;
+
+import "Time.proto";
+import "Transform.proto";
+import "SensorData.proto";
+import "Trajectory.proto";
+
+message RawData
+{
+    message InputData
+    {
+        SensorData sensor_data = 1;
+        Time time = 2;
+        Transform pose = 3;
+        Transform from_updated_pose = 4;
+        bool temporary = 5;
+    }
+
+    oneof raw_data
+    {
+        InputData input_data = 1;
+        Trajectories optimization_results = 2;
+    }
+}
