@@ -1,5 +1,0 @@
-.tox
-**/*.pyc
-.github
-build
-dist
